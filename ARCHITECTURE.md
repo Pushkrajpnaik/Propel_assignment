@@ -4,31 +4,31 @@
 
 ```mermaid
 flowchart TD
-    subgraph IoT_Fleet [34,900 pole devices]
-        P[Pole telemetry\nheartbeat / power_lost / boot]
+    subgraph IoT_Fleet ["34,900 pole devices"]
+        P["Pole telemetry<br/>heartbeat / power_lost / boot"]
     end
 
     subgraph Ingest_Layer
-        B[POST /api/telemetry\nExpress + batched writes]
-        DEDUP[(In-memory dedupe:\ndevice_id + seq)]
+        B["POST /api/telemetry<br/>Express + batched writes"]
+        DEDUP[("In-memory dedupe:<br/>device_id + seq")]
         B --> DEDUP
     end
 
     subgraph Core
-        RED[(PoleState table\none row per pole)]
-        TM[(TelemetryEvent archive)]
-        TOPO[Topology service\n- known 40%\n- geometric infer 60%]
-        DETECT[Detection runner\n(every 20s)]
-        LOC[Localization algorithm\nboundary search + grouping]
-        SCHED[ScheduledOutage filter]
-        TICK[Ticket lifecycle\ndetected → verified]
-        VERIFY[Auto-verification\nevery 15s]
-        AI[LLM incident briefing\nfallback rule-based]
+        RED[("PoleState table<br/>one row per pole")]
+        TM[("TelemetryEvent archive")]
+        TOPO["Topology service<br/>- known 40%<br/>- geometric infer 60%"]
+        DETECT["Detection runner<br/>(every 20s)"]
+        LOC["Localization algorithm<br/>boundary search + grouping"]
+        SCHED["ScheduledOutage filter"]
+        TICK["Ticket lifecycle<br/>detected → verified"]
+        VERIFY["Auto-verification<br/>every 15s"]
+        AI["LLM incident briefing<br/>fallback rule-based"]
     end
 
     subgraph Control_Room
-        UI[Operator console\nReact + Leaflet/OSM]
-        SIM[Fault Simulator UI]
+        UI["Operator console<br/>React + Leaflet/OSM"]
+        SIM["Fault Simulator UI"]
     end
 
     P -->|HTTPS JSON| B
