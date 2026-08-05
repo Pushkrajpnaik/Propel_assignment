@@ -13,8 +13,5 @@ done
 echo "[kspdb] Running Prisma migrations..."
 npx prisma migrate deploy
 
-echo "[kspdb] Seeding database (idempotent)..."
-node dist/seed.js
-
 echo "[kspdb] Starting backend server on :${PORT:-3001}..."
 exec node dist/index.js

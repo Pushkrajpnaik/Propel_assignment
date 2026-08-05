@@ -52,14 +52,12 @@ async function start() {
     process.exit(1);
   }
 
-  try {
-    await seedDatabase();
-  } catch (e) {
-    console.error("[kspdb] Seed failed (continuing):", e);
-  }
-
   app.listen(port, "0.0.0.0", () => {
     console.log(`[kspdb] Listening on 0.0.0.0:${port}  (NODE_ENV=${process.env.NODE_ENV ?? "development"})`);
+  });
+
+  seedDatabase().catch((e) => {
+    console.error("[kspdb] Seed failed (continuing):", e);
   });
 }
 
