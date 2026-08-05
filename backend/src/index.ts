@@ -19,11 +19,14 @@ app.use(express.json({ limit: "10mb" }));
 app.use("/api", router);
 
 if (fs.existsSync(PUBLIC_DIR)) {
-  app.use(express.static(PUBLIC_DIR, { maxAge: "1h", index: "index.html" }));
+  app.use(express.static(PUBLIC_DIR, { maxAge: 0, index: "index.html" }));
   app.get("/*", (_req, res, next) => {
     if (_req.path.startsWith("/api/")) return next();
     const idx = path.join(PUBLIC_DIR, "index.html");
-    if (fs.existsSync(idx)) return res.sendFile(idx);
+    if (fs.existsSync(idx)) {
+      res.setHeader("Cache-Control", "no-cache, no-store, must-revalidate");
+      return res.sendFile(idx);
+    }
     next();
   });
   console.log("[kspdb] Serving frontend SPA from /public");
