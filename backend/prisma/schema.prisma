@@ -1,0 +1,144 @@
+generator client {
+  provider      = "prisma-client-js"
+  binaryTargets = ["native", "linux-musl-openssl-3.0.x", "linux-musl-arm64-openssl-3.0.x", "debian-openssl-3.0.x"]
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Substation {
+  id          String   @id
+  name        String
+  lat         Float
+  lon         Float
+  feeders     Feeder[]
+}
+
+model Feeder {
+  id             String        @id
+  substationId   String
+  name           String
+  substation     Substation    @relation(fields: [substationId], references: [id])
+  transformers   Transformer[]
+}
+
+model Transformer {
+  id               String   @id
+  feederId         String
+  lat              Float
+  lon              Float
+  capacityKva      Int
+  householdsServed Int
+  hasTopology      Boolean  @default(false)
+  feeder           Feeder   @relation(fields: [feederId], references: [id])
+  poles            Pole[]
+}
+
+model Pole {
+  id             String         @id
+  lat            Float
+  lon            Float
+  feederId       String
+  dtId           String
+  seqOnLine      Int?
+  parentPoleId   String?
+  poleType       String
+  ward           String
+  pincode        String?
+  deviceId       String?
+  firmware       String?        @default("1.4.2")
+  transformer    Transformer    @relation(fields: [dtId], references: [id])
+  children       Pole[]         @relation("PoleChildren")
+  parent         Pole?          @relation("PoleChildren", fields: [parentPoleId], references: [id])
+  telemetry      TelemetryEvent[]
+  currentState   PoleState?
+}
+
+model PoleState {
+  poleId        String   @id
+  energized     Boolean
+  lastSeen      DateTime
+  lastEvent     String
+  lastSeq       Int
+  pole          Pole     @relation(fields: [poleId], references: [id])
+}
+
+model TelemetryEvent {
+  id          String   @id @default(uuid())
+  deviceId    String
+  poleId      String
+  event       String
+  energized   Boolean
+  ts          DateTime
+  seq         Int
+  batteryMv   Int?
+  rssi        Int?
+  fw          String?
+  receivedAt  DateTime @default(now())
+  pole        Pole     @relation(fields: [poleId], references: [id])
+
+  @@index([poleId, ts])
+  @@index([deviceId, seq])
+}
+
+model ScheduledOutage {
+  id        String   @id
+  scope     String
+  targetId  String
+  start     DateTime
+  end       DateTime
+  reason    String
+  @@index([targetId, start, end])
+}
+
+model FaultTicket {
+  id               String   @id @default(uuid())
+  faultType        String
+  status           String   @default("detected")
+  confidence       Float
+  spanFromPoleId   String?
+  spanToPoleId     String?
+  dtId             String?
+  feederId         String?
+  lat              Float
+  lon              Float
+  pincode          String?
+  polesAffected    Int      @default(0)
+  householdsAffected Int   @default(0)
+  affectedPoleIds  String[] @default([])
+  boundaryLiveId   String?
+  boundaryDarkId   String?
+  topologyKnown    Boolean  @default(true)
+  detectedAt       DateTime @default(now())
+  acknowledgedAt   DateTime?
+  assignedAt       DateTime?
+  resolvedAt       DateTime?
+  verifiedAt       DateTime?
+  closedAt         DateTime?
+  assignedCrew     String?
+  resolutionNotes  String?
+  aiSummary        String?
+  events           TicketEvent[]
+
+  @@index([status, detectedAt])
+}
+
+model TicketEvent {
+  id         String      @id @default(uuid())
+  ticketId   String
+  type       String
+  message    String
+  data       Json?
+  createdAt  DateTime    @default(now())
+  ticket     FaultTicket @relation(fields: [ticketId], references: [id], onDelete: Cascade)
+}
+
+model SimulationState {
+  id        Int      @id @default(1)
+  running   Boolean  @default(false)
+  faults    Json[]   @default([])
+  deadDevices String[] @default([])
+  updatedAt DateTime @default(now())
+}

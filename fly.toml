@@ -1,0 +1,51 @@
+# fly.io quick config — single container deploy
+#
+# Setup:
+#   1. `fly launch` in the repo root — fly detects `Dockerfile`, builds a single multi-service image.
+#   2. Provision Postgres: `fly postgres create --name kspdb-db --vm-size shared-cpu-1x --initial-cluster-size 1 --volume-size 1 --region bom`
+#   3. Attach: `fly postgres attach kspdb-db -a <app-name>`  (sets DATABASE_URL automatically)
+#   4. Set any remaining env vars:
+#        fly secrets set NODE_ENV=production
+#        fly secrets set OPENAI_API_KEY=sk-...   # optional
+#   5. Deploy: `fly deploy`
+#
+# Free tier (shared-cpu-1x, 256MB) works for reviewer. Startup is a bit slow on first cold boot (~60 s)
+# because of seed + migrations. `[[services]]` below publishes both the static UI + /api on the same port.
+
+app = "REPLACE-ME-APP-NAME"
+primary_region = "bom"   # Mumbai/Singapore area — pick whichever is closer to reviewer
+
+[build]
+  dockerfile = "Dockerfile"
+
+[env]
+  PORT = "3000"
+  NODE_ENV = "production"
+
+[[services]]
+  internal_port = 3000
+  protocol = "tcp"
+  [services.concurrency]
+    hard_limit = 500
+    soft_limit = 250
+    type = "requests"
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
+
+  [[services.http_checks]]
+    interval = "15s"
+    grace_period = "90s"   # give migrations + seed time to run on first boot
+    method = "get"
+    path = "/api/health"
+    protocol = "http"
+    timeout = "5s"
+
+[mounts]
+  source = "kspdb_data"
+  destination = "/data"   # (unused today; ready for extensions)
