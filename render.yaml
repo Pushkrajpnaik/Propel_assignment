@@ -1,24 +1,13 @@
 # Render Blueprint — single-container deploy (frontend + backend in one web service)
-#
-# Setup in the Render dashboard:
-#   1. New → Blueprint → connect your repo.
-#   2. Render reads this file, creates:
-#      - 1 Postgres instance (free tier OK for review)
-#      - 1 Web service, builds from root Dockerfile (single container, serves both UI and /api)
-#      - 1 Redis instance (optional; not required for the code paths that ship today)
-#   3. Open the `.onrender.com` URL.
-#
-# First load will take 2–5 minutes while Postgres warms, migrations run, seed data is written.
-# Reviewer: please be patient.
 
 services:
   - type: web
     name: kspdb-control-room
     runtime: docker
-    repo: https://github.com/REPLACE_ME/REPLACE_ME  # TODO: fill in your public repo
+    repo: https://github.com/Pushkrajpnaik/Propel_assignment
     dockerfilePath: ./Dockerfile
     region: singapore
-    plan: starter
+    plan: free
     numInstances: 1
     healthCheckPath: /api/health
     envVars:
@@ -30,19 +19,14 @@ services:
         value: "3000"
       - key: NODE_ENV
         value: "production"
-      - key: OPENAI_API_KEY
-        sync: false   # optional — set in the Render dashboard if desired
-  - type: redis
-    name: kspdb-redis
-    plan: starter
-    region: singapore
-    maxmemoryPolicy: allkeys-lru
 
 databases:
   - name: kspdb-db
-    plan: starter
+    plan: free
     region: singapore
     postgresMajorVersion: "15"
     databaseName: kspdb
     user: kspdb
-    ipAllowList: []   # allow public access (free tier only; tighten for production)
+    ipAllowList:
+      - source: 0.0.0.0/0
+        description: everywhere
