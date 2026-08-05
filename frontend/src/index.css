@@ -1,40 +1,28 @@
 /* ==========================================================================
-   SUPERCHARGED RETRO MINECRAFT REDSTONE GRID THEME (BLACK & GOLD 8-BIT ART)
+   SLEEK BLACK & GOLD OUTAGE CONTROL ROOM — CRISP MODERN DESIGN SYSTEM
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Silkscreen:wght@400;700&family=VT323&display=swap');
-
 * {
-  box-sizing: border-box !important;
+  box-sizing: border-box;
 }
 
 html, body, #root {
-  height: 100% !important;
-  margin: 0 !important;
-  padding: 0 !important;
-  font-family: 'VT323', monospace !important;
-  background-color: #08080a !important;
-  color: #ffcc00 !important;
-  font-size: 18px !important;
-  letter-spacing: 0.5px !important;
-}
-
-/* Retro Scanline Overlay */
-body::before {
-  content: "";
-  position: fixed;
-  top: 0; left: 0; width: 100vw; height: 100vh;
-  background: linear-gradient(rgba(18, 16, 16, 0) 50%, rgba(0, 0, 0, 0.25) 50%), linear-gradient(90deg, rgba(255, 204, 0, 0.03), rgba(0, 0, 0, 0.01));
-  background-size: 100% 4px, 6px 100%;
-  pointer-events: none;
-  z-index: 99999;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #090a0f;
+  color: #f1f5f9;
+  font-size: 13px;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
 }
 
 .app {
   display: grid;
-  grid-template-rows: 64px 1fr;
+  grid-template-rows: 60px 1fr;
   height: 100vh;
-  background: #08080a !important;
+  background: #090a0f;
 }
 
 /* ==========================================================================
@@ -44,89 +32,86 @@ body::before {
 .topbar {
   display: flex;
   align-items: center;
-  padding: 0 20px !important;
-  background: #111116 !important;
-  border-bottom: 4px solid #ffcc00 !important;
-  gap: 20px !important;
-  box-shadow: 0 4px 0 #000000 !important;
+  padding: 0 20px;
+  background: #111218;
+  border-bottom: 2px solid #ffb700;
+  gap: 24px;
 }
 
 .brand {
   display: flex;
   align-items: center;
   gap: 10px;
-  font-family: 'Press Start 2P', cursive !important;
-  font-size: 12px !important;
-  color: #ffcc00 !important;
-  text-shadow: 2px 2px 0px #000000, 0 0 10px #ffcc00 !important;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 800;
+  font-size: 15px;
+  color: #ffb700;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .brand .bolt {
-  color: #ffcc00 !important;
-  font-size: 22px !important;
-  animation: redstone-glow 1.2s infinite alternate;
-}
-
-@keyframes redstone-glow {
-  0% { text-shadow: 0 0 4px #ff3333; color: #ff3333; }
-  100% { text-shadow: 0 0 16px #ffcc00; color: #ffff00; }
+  color: #ffb700;
+  font-size: 20px;
 }
 
 .stats {
   display: flex;
-  gap: 14px;
+  gap: 16px;
   flex: 1;
 }
 
 .stat {
   display: flex;
   flex-direction: column;
-  background: #000000 !important;
-  border: 3px solid #ffcc00 !important;
-  padding: 4px 10px !important;
-  box-shadow: inset -2px -2px 0px #665200, inset 2px 2px 0px #ffea80, 3px 3px 0px #000000 !important;
+  background: #161822;
+  border: 1px solid #282a36;
+  border-left: 3px solid #ffb700;
+  padding: 5px 12px;
+  border-radius: 4px;
 }
 
 .stat-label {
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 9px !important;
-  color: #ffcc00 !important;
-  text-transform: uppercase !important;
+  font-size: 10px;
+  font-weight: 600;
+  color: #94a3b8;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
 }
 
 .stat-value {
-  font-family: 'Press Start 2P', cursive !important;
-  font-size: 11px !important;
-  color: #ffffff !important;
-  margin-top: 4px !important;
+  font-family: 'JetBrains Mono', monospace;
+  font-weight: 700;
+  font-size: 14px;
+  color: #ffb700;
+  margin-top: 2px;
 }
 
 .stat-value.alert {
-  color: #ff3333 !important;
-  text-shadow: 0 0 8px #ff3333 !important;
+  color: #ff4d4d;
 }
 
 .stat-value.warn {
-  color: #ffaa00 !important;
+  color: #ffaa00;
 }
 
 .stat-value.good {
-  color: #33ff33 !important;
-  text-shadow: 0 0 8px #33ff33 !important;
+  color: #22c55e;
 }
 
 .auto-refresh {
   display: flex;
   align-items: center;
-  gap: 8px;
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 10px !important;
-  color: #ffcc00 !important;
+  gap: 6px;
+  font-size: 12px;
+  color: #cbd5e1;
+  font-weight: 500;
 }
 
 .auto-refresh input {
-  width: 16px; height: 16px;
-  accent-color: #ffcc00 !important;
+  width: 15px;
+  height: 15px;
+  accent-color: #ffb700;
   cursor: pointer;
 }
 
@@ -137,224 +122,261 @@ body::before {
 }
 
 /* ==========================================================================
-   MINECRAFT PIXEL ART BUTTONS (3D BLOCKS)
+   BUTTONS & ACTION CONTROLS
    ========================================================================== */
 
 .btn {
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 11px !important;
-  font-weight: 700 !important;
-  padding: 8px 14px !important;
-  background: #22222a !important;
-  color: #ffcc00 !important;
-  border: 3px solid #ffcc00 !important;
-  box-shadow: inset -2px -2px 0px #000000, inset 2px 2px 0px #555566, 3px 3px 0px #000000 !important;
+  font-family: 'Inter', sans-serif;
+  font-size: 12px;
+  font-weight: 600;
+  padding: 7px 14px;
+  background: #1e202c;
+  color: #f1f5f9;
+  border: 1px solid #333646;
+  border-radius: 5px;
   cursor: pointer;
-  text-transform: uppercase !important;
+  transition: all 0.15s ease;
 }
 
 .btn:hover {
-  background: #333344 !important;
-  color: #ffffff !important;
-}
-
-.btn:active {
-  transform: translate(2px, 2px) !important;
-  box-shadow: 1px 1px 0px #000000 !important;
+  background: #2b2e3e;
+  border-color: #ffb700;
+  color: #ffb700;
 }
 
 .btn-primary {
-  background: #ffcc00 !important;
-  color: #000000 !important;
-  border-color: #ffffff !important;
-  box-shadow: inset -2px -2px 0px #997a00, inset 2px 2px 0px #ffffaa, 3px 3px 0px #000000 !important;
+  background: #ffb700;
+  border-color: #ffe066;
+  color: #000000;
+  font-weight: 700;
 }
 
 .btn-primary:hover {
-  background: #ffe066 !important;
+  background: #ffd000;
+  box-shadow: 0 0 12px rgba(255, 183, 0, 0.4);
 }
 
 .btn-danger {
-  background: #cc0000 !important;
-  color: #ffffff !important;
-  border-color: #ff6666 !important;
-  box-shadow: inset -2px -2px 0px #660000, inset 2px 2px 0px #ffaaaa, 3px 3px 0px #000000 !important;
+  background: #dc2626;
+  border-color: #ef4444;
+  color: white;
+  font-weight: 700;
+}
+
+.btn-danger:hover {
+  background: #b91c1c;
 }
 
 .btn-success {
-  background: #00aa33 !important;
-  color: #ffffff !important;
-  border-color: #66ff99 !important;
-  box-shadow: inset -2px -2px 0px #004d1a, inset 2px 2px 0px #aaffcc, 3px 3px 0px #000000 !important;
+  background: #16a34a;
+  border-color: #22c55e;
+  color: white;
+  font-weight: 700;
+}
+
+.btn-success:hover {
+  background: #15803d;
+}
+
+.btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
 }
 
 /* ==========================================================================
-   MAIN PANELS & LAYOUT
+   MAIN LAYOUT & PANELS
    ========================================================================== */
 
 .main {
   display: grid;
-  grid-template-columns: 390px 1fr 370px;
+  grid-template-columns: 380px 1fr 370px;
   overflow: hidden;
-  background: #08080a !important;
 }
 
 .panel {
-  background: #0c0c10 !important;
-  border-right: 3px solid #ffcc00 !important;
+  background: #0d0e14;
+  border-right: 1px solid #1c1e2a;
   overflow: hidden;
   display: flex;
   flex-direction: column;
 }
 
 .panel.right {
-  border-right: none !important;
-  border-left: 3px solid #ffcc00 !important;
+  border-right: none;
+  border-left: 1px solid #1c1e2a;
 }
 
 .panel-header {
-  padding: 12px 16px !important;
-  border-bottom: 3px solid #ffcc00 !important;
-  font-family: 'Press Start 2P', cursive !important;
-  font-size: 11px !important;
-  color: #ffcc00 !important;
+  padding: 12px 16px;
+  border-bottom: 1px solid #1c1e2a;
+  font-family: 'Outfit', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  color: #ffb700;
   display: flex;
   justify-content: space-between;
   align-items: center;
-  background: #16161e !important;
-  text-shadow: 1px 1px 0px #000 !important;
+  background: #141620;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
 }
 
 .panel-body {
-  overflow-y: auto !important;
+  overflow-y: auto;
   flex: 1;
-  background: #08080a !important;
 }
 
-/* Scrollbar retro styling */
-.panel-body::-webkit-scrollbar { width: 10px; }
-.panel-body::-webkit-scrollbar-track { background: #000000; }
-.panel-body::-webkit-scrollbar-thumb { background: #ffcc00; border: 2px solid #000; }
+/* Scrollbars */
+.panel-body::-webkit-scrollbar { width: 6px; }
+.panel-body::-webkit-scrollbar-track { background: #0d0e14; }
+.panel-body::-webkit-scrollbar-thumb { background: #282a36; border-radius: 3px; }
+.panel-body::-webkit-scrollbar-thumb:hover { background: #ffb700; }
 
 /* ==========================================================================
-   TICKETS & FILTERS
+   INCIDENTS & TICKET LIST
    ========================================================================== */
 
 .filters {
   display: flex;
   gap: 6px;
   flex-wrap: wrap;
-  padding: 10px !important;
-  border-bottom: 3px solid #ffcc00 !important;
-  background: #111116 !important;
+  padding: 8px 12px;
+  border-bottom: 1px solid #1c1e2a;
+  background: #111218;
 }
 
 .empty-filter-chip {
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 10px !important;
-  padding: 5px 9px !important;
-  background: #1a1a22 !important;
-  color: #aaaaaa !important;
-  border: 2px solid #333344 !important;
+  display: inline-flex;
+  gap: 6px;
+  background: #1a1c26;
+  border: 1px solid #282a36;
+  color: #94a3b8;
+  padding: 4px 10px;
+  border-radius: 12px;
+  font-size: 11px;
+  font-weight: 500;
   cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.empty-filter-chip:hover {
+  border-color: #ffb700;
+  color: #f1f5f9;
 }
 
 .empty-filter-chip.on {
-  background: #ffcc00 !important;
-  color: #000000 !important;
-  border-color: #ffffff !important;
-  font-weight: 700 !important;
-  box-shadow: 2px 2px 0px #000000 !important;
+  background: #ffb700;
+  color: #000000;
+  border-color: #ffb700;
+  font-weight: 700;
 }
 
 .ticket-list-item {
-  padding: 12px 14px !important;
-  border-bottom: 2px solid #22222e !important;
+  padding: 12px 16px;
+  border-bottom: 1px solid #161822;
   cursor: pointer;
-  background: #0e0e14 !important;
+  transition: background 0.15s ease;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
 }
 
 .ticket-list-item:hover {
-  background: #1c1c28 !important;
-  border-left: 5px solid #ffcc00 !important;
+  background: #141622;
 }
 
 .ticket-list-item.active {
-  background: #242008 !important;
-  border: 3px solid #ffcc00 !important;
-  box-shadow: inset 0 0 10px rgba(255, 204, 0, 0.4) !important;
+  background: #1e1c0d;
+  border-left: 4px solid #ffb700;
+  padding-left: 12px;
+}
+
+.ticket-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 8px;
 }
 
 .ticket-type {
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 11px !important;
-  color: #ffffff !important;
+  font-weight: 700;
+  font-size: 13px;
+  color: #f1f5f9;
 }
 
 .ticket-meta {
-  font-size: 15px !important;
-  color: #dddddd !important;
+  font-size: 12px;
+  color: #94a3b8;
+  line-height: 1.5;
 }
 
 .badge {
-  display: inline-block !important;
-  padding: 3px 8px !important;
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 9px !important;
-  font-weight: 700 !important;
-  text-transform: uppercase !important;
-  border: 2px solid #000000 !important;
-  box-shadow: 2px 2px 0px #000000 !important;
+  display: inline-block;
+  padding: 2px 8px;
+  border-radius: 4px;
+  font-size: 10px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.3px;
+  white-space: nowrap;
 }
 
-.badge.detected { background: #cc0000 !important; color: #ffffff !important; }
-.badge.acknowledged { background: #ffaa00 !important; color: #000000 !important; }
-.badge.assigned { background: #3388ff !important; color: #ffffff !important; }
-.badge.resolved { background: #00cc44 !important; color: #ffffff !important; }
-.badge.verified, .badge.closed { background: #33ff66 !important; color: #000000 !important; }
-.badge.span { background: #ffcc00 !important; color: #000000 !important; }
-.badge.dt { background: #aa33ff !important; color: #ffffff !important; }
-.badge.feeder { background: #ff33aa !important; color: #ffffff !important; }
+.badge.detected { background: #7f1d1d; color: #fca5a5; border: 1px solid #ef4444; }
+.badge.acknowledged { background: #78350f; color: #fcd34d; border: 1px solid #f59e0b; }
+.badge.assigned { background: #1e3a8a; color: #93c5fd; border: 1px solid #3b82f6; }
+.badge.resolved { background: #064e3b; color: #6ee7b7; border: 1px solid #10b981; }
+.badge.verified, .badge.closed { background: #14532d; color: #86efac; border: 1px solid #22c55e; }
+
+.badge.span { background: #332600; color: #ffb700; border: 1px solid #ffb700; }
+.badge.dt { background: #3b1d6e; color: #c4b5fd; border: 1px solid #8b5cf6; }
+.badge.feeder { background: #6b1d4a; color: #f9a8d4; border: 1px solid #ec4899; }
 
 .confidence-bar {
-  height: 8px !important;
-  background: #000000 !important;
-  border: 1px solid #ffcc00 !important;
+  height: 4px;
+  background: #1a1c26;
+  border-radius: 2px;
+  overflow: hidden;
 }
 
-.confidence-fill.high { background: #33ff33 !important; }
-.confidence-fill.medium { background: #ffcc00 !important; }
-.confidence-fill.low { background: #ff3333 !important; }
+.confidence-fill {
+  height: 100%;
+  border-radius: 2px;
+}
+
+.confidence-fill.high { background: #22c55e; }
+.confidence-fill.medium { background: #ffb700; }
+.confidence-fill.low { background: #ef4444; }
 
 /* ==========================================================================
-   LEAFLET MAP & RETRO MINECRAFT TILE FILTER
+   CLEAN GOOGLE MAPS STYLE MAPVIEW
    ========================================================================== */
 
 .map-wrap {
   position: relative;
-  background: #08080a !important;
+  background: #e5e3df;
 }
 
-/* Turn OpenStreetMap tiles into Dark/Gold Pixel Retro Minecraft Map */
-.leaflet-tile {
-  filter: brightness(0.6) invert(1) contrast(2.5) hue-rotate(200deg) saturate(0.3) !important;
-}
-
+/* Original crisp Google Maps / OSM map tiles without dark filters */
 .leaflet-container {
-  background: #050507 !important;
+  background: #f8f9fa !important;
+  height: 100%;
+  width: 100%;
 }
 
 .map-legend {
   position: absolute;
-  bottom: 16px; left: 16px;
-  background: #101016 !important;
-  border: 3px solid #ffcc00 !important;
-  padding: 12px !important;
-  box-shadow: 4px 4px 0px #000000 !important;
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 10px !important;
-  color: #ffcc00 !important;
-  z-index: 400 !important;
+  bottom: 16px;
+  left: 16px;
+  background: rgba(15, 17, 24, 0.92);
+  backdrop-filter: blur(8px);
+  border: 1px solid #282a36;
+  border-top: 2px solid #ffb700;
+  padding: 10px 14px;
+  border-radius: 6px;
+  font-size: 12px;
+  color: #f1f5f9;
+  z-index: 400;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.4);
 }
 
 .legend-row {
@@ -362,19 +384,21 @@ body::before {
   align-items: center;
   gap: 8px;
   padding: 3px 0;
-  color: #ffffff !important;
+  font-size: 11px;
 }
 
 .legend-dot {
-  width: 12px; height: 12px;
-  border: 2px solid #000000 !important;
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  border: 1px solid rgba(255, 255, 255, 0.4);
 }
 
-.dot-live { background: #33ff33 !important; }
-.dot-dark { background: #ff3333 !important; }
-.dot-unknown { background: #666666 !important; }
-.dot-dt { background: #aa33ff !important; }
-.dot-fault { background: #ffcc00 !important; width: 14px; height: 14px; border: 2px solid #ffffff !important; }
+.dot-live { background: #22c55e; }
+.dot-dark { background: #ef4444; }
+.dot-unknown { background: #64748b; }
+.dot-dt { background: #8b5cf6; border-radius: 2px; }
+.dot-fault { background: #ffb700; width: 14px; height: 14px; border: 2px solid #ffffff; }
 
 /* ==========================================================================
    RIGHT TAB & SIMULATOR & TICKET DETAIL
@@ -382,80 +406,80 @@ body::before {
 
 .tab-bar {
   display: flex;
-  background: #111116 !important;
-  border-bottom: 3px solid #ffcc00 !important;
+  background: #111218;
+  border-bottom: 1px solid #1c1e2a;
 }
 
 .tab {
   flex: 1;
   text-align: center;
-  padding: 12px 10px !important;
+  padding: 11px 12px;
   cursor: pointer;
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 11px !important;
-  color: #888899 !important;
-  border-right: 2px solid #22222e !important;
+  font-weight: 600;
+  font-size: 12px;
+  border-bottom: 2px solid transparent;
+  color: #94a3b8;
+  transition: all 0.15s ease;
 }
 
 .tab.active {
-  color: #000000 !important;
-  background: #ffcc00 !important;
-  font-weight: 700 !important;
-  box-shadow: inset 0 -3px 0px #997a00 !important;
+  color: #ffb700;
+  border-bottom-color: #ffb700;
+  background: #161822;
 }
 
 .ticket-detail {
-  padding: 16px !important;
+  padding: 16px;
 }
 
 .ticket-detail h2 {
-  font-family: 'Press Start 2P', cursive !important;
-  font-size: 12px !important;
-  color: #ffcc00 !important;
-  margin: 0 0 12px 0 !important;
-  text-shadow: 1px 1px 0px #000 !important;
+  margin: 0 0 6px 0;
+  font-size: 17px;
+  font-weight: 700;
+  color: #f1f5f9;
 }
 
 .section {
-  margin-top: 18px !important;
-  padding-top: 14px !important;
-  border-top: 2px dashed #ffcc00 !important;
+  margin-top: 16px;
+  padding-top: 12px;
+  border-top: 1px solid #1c1e2a;
 }
 
 .section h3 {
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 10px !important;
-  color: #ffcc00 !important;
-  margin: 0 0 10px 0 !important;
+  margin: 0 0 10px 0;
+  font-size: 11px;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  color: #94a3b8;
 }
 
 .kv {
   display: grid;
   grid-template-columns: 120px 1fr;
   gap: 6px 12px;
-  font-size: 16px !important;
+  font-size: 13px;
   margin-bottom: 6px;
 }
 
 .kv-key {
-  color: #aaaaaa !important;
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 9px !important;
+  color: #94a3b8;
 }
 
 .kv-val {
-  color: #ffffff !important;
+  color: #f1f5f9;
+  font-weight: 600;
+  word-break: break-word;
 }
 
 .ai-summary {
-  background: #181826 !important;
-  border: 3px solid #aa33ff !important;
-  border-left: 8px solid #aa33ff !important;
-  padding: 12px !important;
-  font-size: 16px !important;
-  line-height: 1.5 !important;
-  color: #e0d0ff !important;
-  box-shadow: 4px 4px 0px #000000 !important;
+  background: #161822;
+  border-left: 4px solid #ffb700;
+  padding: 12px;
+  border-radius: 0 6px 6px 0;
+  font-size: 13px;
+  line-height: 1.55;
+  color: #e2e8f0;
 }
 
 .event-feed {
@@ -465,90 +489,118 @@ body::before {
 }
 
 .event-item {
-  background: #101018 !important;
-  border: 2px solid #ffcc00 !important;
-  padding: 10px !important;
-  font-size: 15px !important;
-  box-shadow: 3px 3px 0px #000000 !important;
+  background: #161822;
+  border: 1px solid #282a36;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 12px;
 }
 
 .event-time {
-  color: #888899 !important;
-  font-size: 13px !important;
+  color: #64748b;
+  font-size: 11px;
+  margin-bottom: 3px;
 }
 
 .event-type {
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 9px !important;
-  color: #ffcc00 !important;
+  font-weight: 700;
+  color: #ffb700;
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.4px;
+  margin-right: 6px;
 }
 
 .simulator-wrap {
-  padding: 16px !important;
+  padding: 16px;
   display: flex;
   flex-direction: column;
   gap: 16px;
 }
 
 .sim-card {
-  background: #101018 !important;
-  border: 3px solid #ffcc00 !important;
-  padding: 14px !important;
-  box-shadow: 4px 4px 0px #000000 !important;
+  background: #141620;
+  border: 1px solid #282a36;
+  border-left: 3px solid #ffb700;
+  border-radius: 6px;
+  padding: 12px;
 }
 
 .sim-card h4 {
-  font-family: 'Press Start 2P', cursive !important;
-  font-size: 10px !important;
-  color: #ffcc00 !important;
-  margin: 0 0 12px 0 !important;
+  margin: 0 0 10px 0;
+  font-size: 13px;
+  font-weight: 700;
+  color: #ffb700;
+}
+
+.sim-row {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  margin-bottom: 8px;
 }
 
 .sim-row label {
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 9px !important;
-  color: #aaaaaa !important;
+  font-size: 11px;
+  color: #94a3b8;
+  min-width: 65px;
 }
 
 .sim-row input, .sim-row select {
-  background: #000000 !important;
-  border: 2px solid #ffcc00 !important;
-  color: #ffcc00 !important;
-  padding: 6px 10px !important;
-  font-family: 'VT323', monospace !important;
-  font-size: 18px !important;
+  flex: 1;
+  background: #0d0e14;
+  border: 1px solid #282a36;
+  color: #f1f5f9;
+  padding: 6px 10px;
+  border-radius: 4px;
+  font-size: 12px;
+  outline: none;
+}
+
+.sim-row input:focus, .sim-row select:focus {
+  border-color: #ffb700;
 }
 
 .active-fault-item {
-  background: #2a0808 !important;
-  border: 2px solid #ff3333 !important;
-  padding: 10px !important;
-  font-size: 15px !important;
-  box-shadow: 3px 3px 0px #000000 !important;
+  background: #2a1212;
+  border: 1px solid #ef4444;
+  border-radius: 6px;
+  padding: 8px 12px;
+  font-size: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
 }
 
 .error-toast {
   position: fixed;
-  top: 76px; right: 20px;
-  background: #cc0000 !important;
-  color: #ffffff !important;
-  border: 3px solid #ff6666 !important;
-  padding: 12px 18px !important;
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 11px !important;
-  z-index: 99999 !important;
-  box-shadow: 5px 5px 0px #000000 !important;
+  top: 70px; right: 20px;
+  background: #7f1d1d;
+  color: #fecaca;
+  border: 1px solid #ef4444;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
 }
 
 .success-toast {
   position: fixed;
-  top: 76px; right: 20px;
-  background: #00aa33 !important;
-  color: #ffffff !important;
-  border: 3px solid #66ff99 !important;
-  padding: 12px 18px !important;
-  font-family: 'Silkscreen', sans-serif !important;
-  font-size: 11px !important;
-  z-index: 99999 !important;
-  box-shadow: 5px 5px 0px #000000 !important;
+  top: 70px; right: 20px;
+  background: #14532d;
+  color: #bbf7d0;
+  border: 1px solid #22c55e;
+  padding: 10px 16px;
+  border-radius: 6px;
+  font-size: 13px;
+  z-index: 9999;
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.5);
+}
+
+.empty-state {
+  padding: 24px;
+  color: #64748b;
+  text-align: center;
+  font-size: 13px;
 }
