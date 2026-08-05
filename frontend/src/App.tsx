@@ -60,7 +60,7 @@ export default function App() {
       <div className="topbar">
         <div className="brand">
           <span className="bolt">⚡</span>
-          KSPDB · Outage Control Room
+          REDSTONE GRID · OUTAGE CONTROL
         </div>
         <div className="stats">
           <div className="stat">
